@@ -1,19 +1,29 @@
-<h1>Movie Search</h1>
+<div class="container bg-light py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4">Movie Search</h1>
 
-<%= form_tag movies_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search by title..." %>
-  <%= submit_tag "Search" %>
-<% end %>
+      <%= form_tag movies_path, method: :get, class: "form-inline mb-3 justify-content-center" do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Search by title...", class: "form-control", style: "margin-right: 40px;" %>
+          <div class="input-group-append">
+            <%= submit_tag "Search", class: "btn btn-primary btn-creative" %>
+          </div>
+        </div>
+      <% end %>
 
-<% if @movies.present? %>
-  <h2>Search Results:</h2>
-  <ul>
-    <% @movies.each do |movie| %>
-    <li>
-      <%= link_to movie["Title"], movie_path(movie["imdbID"]) %>
-    </li>
-    <% end %>
-</ul>
-    <% else %>
-      <p>No search results found.</p>
-<% end %>
+      <% if @movies.present? %>
+        <h2 class="mt-5">Search Results:</h2>
+        <ul class="list-group">
+          <% @movies.each do |movie| %>
+          <li class="list-group-item">
+            <%= link_to movie["Title"], movie_path(movie["imdbID"]) %>
+          </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="mt-5">No search results found.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

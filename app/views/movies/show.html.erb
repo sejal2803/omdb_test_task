@@ -1,5 +1,10 @@
-<h1><%= @movie["Title"] %></h1>
-
-<p><strong>Year:</strong> <%= @movie["Year"] %></p>
-<p><strong>Plot:</strong> <%= @movie["Plot"] %></p>
-<!-- Add additional details as needed -->
+<div class="container bg-light py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1><%= @movie["Title"] %></h1>
+      <p><strong>Year:</strong> <%= @movie["Year"] %></p>
+      <p><strong>Plot:</strong> <%= @movie["Plot"] %></p>
+      <p><strong>Rating:</strong> <%= @movie["Ratings"][0]["Value"] %></p>
+    </div>
+  </div>
+</div>
