@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11
+
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: password # set the Postgres superuser password
+      POSTGRES_DB: omdb_test_task_development # set the name of the development database
+
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://developer:password@db:5432/omdb_test_task_development
+
+volumes:
+  postgres_data:
